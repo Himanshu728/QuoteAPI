@@ -67,19 +67,22 @@ namespace QuoteAPI.Services
             }
         }
 
-        public void AddQuotes(List<QuoteDTO> quotes)
+        public List<Quote> AddQuotes(List<QuoteDTO> quotes)
         {
             try
             {
+                List<Quote> responseList = new List<Quote>();
                 foreach(var quote in quotes)
                 {
                     var q = new Quote(quote.author, quote.tags, quote.quote)
                     {
                         id = _dbContext.Quotes.Count() + 1
                     };
+                    responseList.Add(q);
                     _dbContext.Quotes.Add(q);
                     _dbContext.SaveChanges();
                 }
+                return responseList;
             }
             catch(Exception ex)
             {
@@ -87,7 +90,7 @@ namespace QuoteAPI.Services
             }
         }
 
-        public void DeleteQuote(int id)
+        public Quote DeleteQuote(int id)
         {
             try
             {
@@ -97,6 +100,7 @@ namespace QuoteAPI.Services
                     _dbContext.Quotes.Remove(quote);
                     _dbContext.SaveChanges();
                 }
+                return quote;
             }
             catch(Exception ex)
             {

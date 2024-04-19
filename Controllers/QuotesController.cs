@@ -74,8 +74,7 @@ namespace QuoteAPI.Controllers
         {
             try
             {
-                _quoteService.AddQuotes(quotes);
-                return Ok("Quotes added successfully");
+                return Ok(_quoteService.AddQuotes(quotes));
             }
             catch (Exception ex)
             {
@@ -88,8 +87,7 @@ namespace QuoteAPI.Controllers
         {
             try
             {
-                _quoteService.DeleteQuote(id);
-                return Ok("Quote Deleted Successfully");
+                return Ok(_quoteService.DeleteQuote(id));
             }
             catch(Exception ex)
             {

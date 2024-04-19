@@ -9,8 +9,8 @@ namespace QuoteAPI.IServices
         public List<Quote> GetQuoteByAuthor(string authorName);
         public List<Quote> GetQuoteByTags(List<string> tags);
         public List<Quote> GetQuoteByQuote(string quote);
-        public void AddQuotes(List<QuoteDTO> quotes);
-        public void DeleteQuote(int id);
+        public List<Quote> AddQuotes(List<QuoteDTO> quotes);
+        public Quote DeleteQuote(int id);
         public Quote UpdateQuote(Quote quote);
     }
 }
